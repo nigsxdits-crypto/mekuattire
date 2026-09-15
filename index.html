@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MEKU ATTIRE — Premium Hoodies</title>
+  <link rel="icon" type="image/png" href="meku-logo.png" />
+  <link rel="apple-touch-icon" href="meku-logo.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="topbar">
+    <button class="icon-btn menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+
+    <a class="brand" href="#">MEKU ATTIRE</a>
+
+    <div class="header-actions">
+      <button class="icon-btn" aria-label="Search" id="searchBtn">⌕</button>
+      <button class="cart-button" id="cartBtn" aria-label="Open cart">
+        🛒 <span id="cartCount">0</span>
+      </button>
+    </div>
+  </header>
+
+  <aside class="mobile-menu" id="mobileMenu">
+    <button class="close-menu" id="closeMenu">×</button>
+    <a href="#home">Home</a>
+    <a href="#products">Hoodies</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </aside>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-content">
+        <p class="eyebrow">PREMIUM HOODIES</p>
+        <h1>BUILT FOR<br>EVERYDAY.</h1>
+        <p class="hero-subtitle">Minimal designs. Maximum comfort.</p>
+        <a href="#products" class="outline-btn">SHOP NOW</a>
+      </div>
+      <div class="hero-image" role="img" aria-label="Black hoodie editorial image"></div>
+    </section>
+
+    <section class="catalog" id="products">
+      <div class="section-heading">
+        <h2>FEATURED HOODIES</h2>
+        <label>
+          SORT BY
+          <select id="sortSelect">
+            <option value="featured">Featured</option>
+            <option value="low">Price: Low to High</option>
+            <option value="high">Price: High to Low</option>
+            <option value="name">Name</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="products-grid" id="productsGrid"></div>
+    </section>
+
+    <section class="about" id="about">
+      <p class="eyebrow">OUR PHILOSOPHY</p>
+      <h2>Quiet design.<br>Strong identity.</h2>
+      <p>Elevated streetwear. Effortless fits. Made to stand out.</p>
+    </section>
+
+    <section class="contact-section" id="contact">
+      <p class="eyebrow">GET IN TOUCH</p>
+      <h2>Stay connected.</h2>
+      <a href="https://instagram.com/meku.attire" target="_blank" rel="noopener noreferrer">@meku.attire</a>
+    </section>
+  </main>
+
+  <aside class="cart-panel" id="cartPanel">
+    <div class="cart-header">
+      <h2>YOUR CART</h2>
+      <button class="close-cart" id="closeCart">×</button>
+    </div>
+
+    <div class="cart-items" id="cartItems">
+      <p class="empty-cart">Your cart is empty.</p>
+    </div>
+
+    <div class="cart-summary">
+      <div class="discount-row">
+        <input type="text" id="discountCode" placeholder="Add discount code">
+        <button id="applyDiscount">APPLY</button>
+      </div>
+      <p id="discountMessage"></p>
+      <div class="summary-line"><span>Subtotal</span><span id="subtotal">Rs. 0</span></div>
+      <div class="summary-line"><span>Shipping</span><span id="shipping">Free</span></div>
+      <div class="summary-line total"><span>Total</span><span id="total">Rs. 0</span></div>
+      <button class="checkout-btn" id="checkoutBtn">CHECKOUT</button>
+    </div>
+  </aside>
+
+  <div class="overlay" id="overlay"></div>
+
+  <section class="checkout-modal" id="checkoutModal" aria-hidden="true">
+    <div class="checkout-box">
+      <div class="checkout-heading">
+        <div>
+          <p class="eyebrow">SECURE YOUR ORDER</p>
+          <h2>Checkout</h2>
+        </div>
+        <button class="close-checkout" id="closeCheckout">×</button>
+      </div>
+
+      <form id="checkoutForm">
+        <h3>Contact information</h3>
+        <div class="form-grid">
+          <label>
+            First name *
+            <input type="text" id="firstName" required>
+          </label>
+          <label>
+            Last name *
+            <input type="text" id="lastName" required>
+          </label>
+          <label class="full-width">
+            Email address *
+            <input type="email" id="email" required>
+          </label>
+          <label class="full-width">
+            Contact number *
+            <input type="tel" id="phone" required pattern="[0-9+()\-\s]{7,}">
+          </label>
+        </div>
+
+        <h3>Delivery information</h3>
+        <div class="form-grid">
+          <label class="full-width">
+            Complete address *
+            <textarea id="address" rows="3" required></textarea>
+          </label>
+          <label>
+            City *
+            <input type="text" id="city" required>
+          </label>
+          <label>
+            Postal code
+            <input type="text" id="postalCode">
+          </label>
+        </div>
+
+        <h3>Payment method</h3>
+        <div class="payment-options">
+          <label class="payment-option">
+            <input type="radio" name="payment" value="Cash on Delivery" checked>
+            <span>Cash on Delivery</span>
+          </label>
+          <label class="payment-option">
+            <input type="radio" name="payment" value="Card Payment">
+            <span>Card Payment</span>
+          </label>
+        </div>
+
+        <div class="card-fields" id="cardFields">
+          <label>
+            Card number
+            <input type="text" id="cardNumber" inputmode="numeric" placeholder="1234 5678 9012 3456">
+          </label>
+          <div class="form-grid">
+            <label>
+              Expiry date
+              <input type="text" id="expiry" placeholder="MM/YY">
+            </label>
+            <label>
+              CVV
+              <input type="password" id="cvv" inputmode="numeric" placeholder="123">
+            </label>
+          </div>
+          <p class="demo-note">Demo payment fields only. Connect a real payment gateway before accepting live card payments.</p>
+        </div>
+
+        <div class="checkout-total">
+          <span>Order total</span>
+          <strong id="checkoutTotal">Rs. 0</strong>
+        </div>
+
+        <button type="submit" class="place-order-btn">PLACE ORDER</button>
+        <p class="checkout-note">Fields marked with * are required.</p>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <p>© 2026 MEKU ATTIRE. ALL RIGHTS RESERVED.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
